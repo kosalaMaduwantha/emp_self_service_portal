@@ -8,4 +8,7 @@ class Request(models.Model):
     request_name = models.CharField(max_length=100)
     details = models.CharField(max_length=1000)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.request_name
 

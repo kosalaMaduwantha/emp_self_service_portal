@@ -22,5 +22,7 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     
 
+    
+
 
 
