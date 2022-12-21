@@ -11,3 +11,6 @@ class Document(models.Model):
     document_category = models.CharField(max_length=40)
     doc_link = models.CharField(max_length=300)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    
+    
+# hi menna change ekak
