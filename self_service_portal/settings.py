@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'Request.apps.RequestConfig',
     'document.apps.DocumentConfig',
     'employee.apps.EmployeeConfig',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +56,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'self_service_portal.urls'
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
 
 TEMPLATES = [
     {
