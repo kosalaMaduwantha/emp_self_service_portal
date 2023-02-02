@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-
+from rest_framework.views import APIView
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -30,17 +30,30 @@ def employees_list(request):
     
     
 # get the employee details from the employee entity    
-@api_view(['GET'])
-def employee_detail_per_employee(request, pk):
-    try: 
-        employees = Employee.objects.get(pk=pk) 
-    except employees.DoesNotExist: 
-        return JsonResponse({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+# @api_view(['GET'])
+# def employee_detail_per_employee(request, pk):
+#     try: 
+#         employees = Employee.objects.get(pk=pk) 
+#     except employees.DoesNotExist: 
+#         return JsonResponse({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND) 
  
-    if request.method == 'GET': 
-        serializer = EmployeeSerializer(employees) 
-        return JsonResponse(serializer.data) 
-    return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+#     if request.method == 'GET': 
+#         serializer = EmployeeSerializer(employees) 
+#         return JsonResponse(serializer.data) 
+#     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
+
+
+# class bases view refactering
+class EmployeeDetailView(APIView):
+    def get(self, request, pk):
+        try:
+            employees = Employee.objects.get(pk=pk)
+        except employees.DoesNotExist:
+            return Response({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = EmployeeSerializer(employees)
+        return Response(serializer.data)
     
     
  

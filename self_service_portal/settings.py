@@ -31,19 +31,25 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'rest_framework_simplejwt',
     'Request.apps.RequestConfig',
     'document.apps.DocumentConfig',
     'employee.apps.EmployeeConfig',
+    'User.apps.UserConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djoser',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -54,6 +60,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'self_service_portal.urls'
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:3000'
+]
 
 TEMPLATES = [
     {
@@ -80,7 +90,7 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'emp_self_serv', 
+        'NAME': 'new_emp_serv_db', 
         'USER': 'postgres', 
         'PASSWORD': 'kosalaMA19#',
         'HOST': '127.0.0.1', 
@@ -129,3 +139,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+
+}
+
+AUTH_USER_MODEL = 'User.CustomUser'

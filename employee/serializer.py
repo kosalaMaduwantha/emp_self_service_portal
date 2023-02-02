@@ -12,6 +12,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
                   'pref_last_name',
                   'NIC',
                   'age',
+                  'email',
                   'gender',
                   'dob',
                   'country_of_birth',
@@ -19,7 +20,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
                   'ethnicity',
                   'nationality',
                   'citizenship_status',
-                  'department')
+                  'department',
+                  'phone',
+                  'address')
         
         
         
