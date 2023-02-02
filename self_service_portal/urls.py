@@ -20,6 +20,9 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^', include('employee.urls')),
-    re_path(r'^', include('Request.urls'))
+    re_path(r'^', include('Request.urls')),
+    re_path(r'^', include('User.urls')),
+    re_path(r'^auth/', include('djoser.urls')),
+    re_path(r'^authj/', include('djoser.urls.authtoken')),
 ]
 

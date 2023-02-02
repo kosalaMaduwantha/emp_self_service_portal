@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'employee.apps.EmployeeConfig',
     'User.apps.UserConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djoser',
 ]
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'emp_self_serv', 
+        'NAME': 'new_emp_serv_db', 
         'USER': 'postgres', 
         'PASSWORD': 'kosalaMA19#',
         'HOST': '127.0.0.1', 
@@ -143,6 +145,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     )
 
 }
