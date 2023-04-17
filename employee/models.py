@@ -26,6 +26,11 @@ class Employee(models.Model):
     address = models.CharField(max_length=255)
     phone = models.CharField(max_length=10)
     
+    
+# these are the model
+
+# here is another comment
+    
 
     
 
