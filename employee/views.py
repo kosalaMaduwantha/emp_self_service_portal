@@ -8,6 +8,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from employee.models import Employee
 from employee.serializer import EmployeeSerializer
+from django.core.exceptions import ObjectDoesNotExist
 
 
 @api_view(['GET', 'POST'])
@@ -42,17 +43,25 @@ def employees_list(request):
 #         return JsonResponse(serializer.data) 
 #     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
-
+# get all the employees as a list
+class EmployeeListView(APIView):
+    def get(self, request):
+        try:
+            employees = Employee.objects.all()
+            serializer = EmployeeSerializer(employees, many=True)
+        except Exception as e:
+            return Response({"message":"an error occured {}".format(e)})
+        return Response(serializer.data)
 
 # class bases view refactering
 class EmployeeDetailView(APIView):
     def get(self, request, pk):
         try:
-            employees = Employee.objects.get(pk=pk)
-        except employees.DoesNotExist:
+            employee = Employee.objects.get(pk=pk)
+        except ObjectDoesNotExist:
             return Response({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
-        serializer = EmployeeSerializer(employees)
+        serializer = EmployeeSerializer(employee)
         return Response(serializer.data)
     
     
