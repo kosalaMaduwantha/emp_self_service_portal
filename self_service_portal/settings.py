@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'corsheaders',
-    'rest_framework_simplejwt',
     'Request.apps.RequestConfig',
     'document.apps.DocumentConfig',
     'employee.apps.EmployeeConfig',
@@ -90,9 +89,9 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'new_emp_serv_db', 
+        'NAME': 'example', 
         'USER': 'postgres', 
-        'PASSWORD': 'kosalaMA19#',
+        'PASSWORD': 'example',
         'HOST': '127.0.0.1', 
         'PORT': '5432',
     }
