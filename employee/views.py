@@ -29,20 +29,6 @@ def employees_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
-    
-# get the employee details from the employee entity    
-# @api_view(['GET'])
-# def employee_detail_per_employee(request, pk):
-#     try: 
-#         employees = Employee.objects.get(pk=pk) 
-#     except employees.DoesNotExist: 
-#         return JsonResponse({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND) 
- 
-#     if request.method == 'GET': 
-#         serializer = EmployeeSerializer(employees) 
-#         return JsonResponse(serializer.data) 
-#     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
-
 # get all the employees as a list
 class EmployeeListView(APIView):
     def get(self, request):
@@ -65,16 +51,7 @@ class EmployeeDetailView(APIView):
         return Response(serializer.data)
     
     
- 
-    
 
-
- 
-
-    
-    
-    
-    
 # request delete data request to employee information  
 @api_view(['DELETE'])
 def request_delete_data(request, pk):
@@ -86,5 +63,19 @@ def request_delete_data(request, pk):
     if request.method == 'DELETE': 
         employees.delete() 
         return JsonResponse({'message': 'Employee was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+    
+# get the employee details from the employee entity    
+# @api_view(['GET'])
+# def employee_detail_per_employee(request, pk):
+#     try: 
+#         employees = Employee.objects.get(pk=pk) 
+#     except employees.DoesNotExist: 
+#         return JsonResponse({'message': 'The employee does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+ 
+#     if request.method == 'GET': 
+#         serializer = EmployeeSerializer(employees) 
+#         return JsonResponse(serializer.data) 
+#     return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+
     
     
