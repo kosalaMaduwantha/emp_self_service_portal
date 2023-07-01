@@ -8,6 +8,7 @@ from employee.models import Employee
 from employee.serializer import EmployeeSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 
 # @api_view(['GET', 'POST'])
@@ -30,7 +31,7 @@ from rest_framework.permissions import IsAuthenticated
     
 # get all the employees as a list
 class EmployeeListView(APIView):
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     def get(self, request):
         try:
             employees = Employee.objects.all()
@@ -41,7 +42,7 @@ class EmployeeListView(APIView):
 
 # class bases view refactering
 class EmployeeDetailView(APIView):
-    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     def get(self, request, pk):
         try:
             employee = Employee.objects.get(pk=pk)

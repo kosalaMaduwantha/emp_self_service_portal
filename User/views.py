@@ -8,6 +8,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializer import UserSerializer
 from rest_framework import permissions
+from rest_framework.authtoken.models import Token
+
+def generate_token(user):
+    token, created = Token.objects.get_or_create(user=user)
+    return token.key
 
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -18,14 +23,16 @@ class LoginView(APIView):
 
         if user is not None:
             login(request, user)
-            return Response({'status': 'success'}, status=status.HTTP_200_OK)
+            token = generate_token(user)
+            return Response({'token': token}, status=status.HTTP_200_OK)
         else:
-            return Response({'status': 'Invalid login'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'status': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class LogoutView(APIView):
     permission_classes = [permissions.AllowAny]
-    def get(self, request, *args, **kwargs):
-        logout(request)
+    def post(self, request, *args, **kwargs):
+        token = Token.objects.get(user=request.user)
+        token.delete()
         return Response({'status': 'Logout successful'}, status=status.HTTP_200_OK)
 
 class UserCreate(APIView):
