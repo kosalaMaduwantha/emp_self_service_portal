@@ -32,10 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'corsheaders',
-    'Request.apps.RequestConfig',
-    'document.apps.DocumentConfig',
-    'employee.apps.EmployeeConfig',
-    'User.apps.UserConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -45,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djoser',
+    'Request.apps.RequestConfig',
+    'document.apps.DocumentConfig',
+    'employee.apps.EmployeeConfig',
+    'User.apps.UserConfig'
 ]
 
 MIDDLEWARE = [
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'example', 
+        'NAME': 'employee', 
         'USER': 'postgres', 
         'PASSWORD': 'example',
         'HOST': '127.0.0.1', 
@@ -141,11 +141,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    )
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ]
 
 }
 
