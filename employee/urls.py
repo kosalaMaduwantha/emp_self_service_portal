@@ -1,9 +1,6 @@
 from django.urls import re_path 
 from employee.views import EmployeeDetailView, EmployeeListView
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+
  
  
 urlpatterns = [ 

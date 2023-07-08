@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'djoser',
     'Request.apps.RequestConfig',
     'document.apps.DocumentConfig',
     'employee.apps.EmployeeConfig',
