@@ -16,17 +16,29 @@ def generate_token(user):
 
 class LoginView(APIView):
     permission_classes = [permissions.AllowAny]
+
     def post(self, request, *args, **kwargs):
         username = request.data.get('username')
         password = request.data.get('password')
+
+        # Check if username or password is None
+        if username is None or password is None:
+            return Response(
+                {'status': 'Please provide both username and password'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)
             token = generate_token(user)
             return Response({'token': token}, status=status.HTTP_200_OK)
         else:
-            return Response({'status': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(
+                {'status': 'Invalid credentials'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
 
 class LogoutView(APIView):
     permission_classes = [permissions.AllowAny]

@@ -32,6 +32,7 @@ from rest_framework.authentication import TokenAuthentication
 # get all the employees as a list
 class EmployeeListView(APIView):
     authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         try:
             employees = Employee.objects.all()
@@ -43,6 +44,7 @@ class EmployeeListView(APIView):
 # class bases view refactering
 class EmployeeDetailView(APIView):
     authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         try:
             employee = Employee.objects.get(pk=pk)
