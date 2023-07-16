@@ -9,6 +9,7 @@ from rest_framework import status
 from .serializer import UserSerializer
 from rest_framework import permissions
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 
 def generate_token(user):
     token, created = Token.objects.get_or_create(user=user)
@@ -41,7 +42,7 @@ class LoginView(APIView):
 
 
 class LogoutView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):
         token = Token.objects.get(user=request.user)
         token.delete()
