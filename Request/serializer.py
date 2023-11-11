@@ -6,8 +6,6 @@ class RequestSerializer(serializers.ModelSerializer):
  
     class Meta:
         model = Request
-        fields = ('request_name',
-                  'details',
-                  'employee')
+        fields = '__all__'
         
         
