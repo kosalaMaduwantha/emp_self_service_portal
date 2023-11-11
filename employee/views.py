@@ -9,17 +9,21 @@ from employee.serializer import EmployeeSerializer
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from self_service_portal.utilities.logger import Logger
 
-    
+logger = Logger(__name__)
+
 # get all the employees as a list
 class EmployeeListView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     def get(self, request):
         try:
+            logger.info("get all employees")
             employees = Employee.objects.all()
             serializer = EmployeeSerializer(employees, many=True)
         except Exception as e:
+            logger.error("an error occured {}".format(e))
             return Response({"message":"an error occured {}".format(e)})
         return Response(serializer.data)
 
