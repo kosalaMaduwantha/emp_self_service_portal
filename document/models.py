@@ -6,8 +6,8 @@ from employee.models import Employee
 class Document(models.Model):
     name_doc = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
-    uploaded_date = models.DateField()
-    updated_date = models.DateField()
+    uploaded_date = models.DateField(auto_now_add=True)
+    updated_date = models.DateField(auto_now=True)
     document_category = models.CharField(max_length=40)
     doc_link = models.CharField(max_length=300)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
