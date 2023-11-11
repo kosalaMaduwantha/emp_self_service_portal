@@ -1,56 +1,24 @@
-INSERT INTO public.employee_department (department_name)
-VALUES
-    ('HR'),
-    ('IT'),
-    ('Finance');
+-- Insert into Department
+INSERT INTO employee_department  (department_name)
+VALUES ('Department1'),
+       ('Department2'),
+       ('Department3');
+      
+SELECT * FROM employee_employee;
 
-
-INSERT INTO public.employee_employee (
-    legal_first_name,
-    legal_last_name,
-    pref_first_name,
-    pref_last_name,
-    "NIC",
-    email,
-    age,
-    gender,
-    dob,
-    country_of_birth,
-    marital_status,
-    ethnicity,
-    nationality,
-    citizenship_status,
-    address,
-    phone,
-    department_id
-)
-VALUES
-    ('John', 'Smith', 'Johnny', 'J. Smith', '1234', 'john.smith@example.com', 30, 'Male', '1993-06-15', 'USA', 'Single', 'Caucasian', 'American', 'Citizen', '123 Main St, Anytown, USA', '+1 123 4567', 1),
-    ('Jane', 'Doe', 'Janey', 'J. Doe', '5678', 'jane.doe@example.com', 28, 'Female', '1995-03-22', 'Canada', 'Married', 'Asian', 'Canadian', 'Permanent Resident', '456 Elm St, Othertown, CA', '+1 987 6543', 2),
-    ('Mike', 'Johnson', 'Mickey', 'M. Johnson', '9012', 'mike.johnson@example.com', 35, 'Male', '1988-11-10', 'UK', 'Divorced', 'African', 'British', 'Non-Citizen', '789 Oak Ave, Anycity, UK', '+44 20 1234', 1);
-
-INSERT INTO public.document_document (
-    name_doc,
-    description,
-    uploaded_date,
-    updated_date,
-    document_category,
-    doc_link,
-    employee_id 
-)
-VALUES
-    ('Contract 2023', 'Employment Contract', '2023-07-15', '2023-07-17', 'Employment', '/documents/contract_2023', 1),
-    ('Passport Scan', 'Passport Copy', '2023-07-10', '2023-07-11', 'Identification', '/documents/passport_scan', 2),
-    ('Training Plan', 'Training Document', '2023-07-20', '2023-07-21', 'Training', '/documents/training_plan', 1);
-
-
-INSERT INTO public."Request_request" (
-    request_type,
-    request_name,
-    details,
-    employee_id
-)
-VALUES
-    ('Leave', 'Annual Leave', 'Requesting 5 days of annual leave', 1),
-    ('Promotion', 'Senior Developer', 'Requesting a promotion to senior', 3),
-    ('Expense', 'Conference Travel', 'Requesting expense for conference', 2);
+-- Insert into Employee
+INSERT INTO employee_employee  (legal_first_name, legal_last_name, pref_first_name, pref_last_name, NIC, email, age, gender, dob, country_of_birth, marital_status, ethnicity, nationality, citizenship_status, department_id, address, phone, emmergency_contact)
+VALUES ('John', 'Doe', 'John', 'Doe', '1234567890', 'john.doe@example.com', 30, 'Male', '1992-01-01', 'Country1', 'Single', 'Ethnicity1', 'Nationality1', 'Citizenship1', 1, 'Address1', '1234567890', '0987654321'),
+       ('Jane', 'Doe', 'Jane', 'Doe', '0987654321', 'jane.doe@example.com', 25, 'Female', '1997-01-01', 'Country2', 'Married', 'Ethnicity2', 'Nationality2', 'Citizenship2', 2, 'Address2', '0987654321', '1234567890');
+       
+      
+INSERT INTO document_document  (name_doc, description, uploaded_date, updated_date, document_category, doc_link, employee_id)
+VALUES ('Doc1', 'Description1', '2022-01-01', '2022-01-02', 'Category1', 'http://link1.com', 1),
+       ('Doc2', 'Description2', '2022-02-01', '2022-02-02', 'Category2', 'http://link2.com', 2),
+       ('Doc3', 'Description3', '2022-03-01', '2022-03-02', 'Category3', 'http://link3.com', 1);
+       
+      
+INSERT INTO Request_request  (request_type, request_name, details, employee_id)
+VALUES ('Type1', 'Request1', 'Details about request1', 1),
+       ('Type2', 'Request2', 'Details about request2', 2),
+       ('Type3', 'Request3', 'Details about request3', 2);

@@ -1,8 +1,6 @@
 # Create your views here.
 from rest_framework.views import APIView
-from django.http import JsonResponse
 from rest_framework import status
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from employee.models import Employee
 from employee.serializer import EmployeeSerializer
