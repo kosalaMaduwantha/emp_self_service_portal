@@ -87,12 +87,12 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'employee', 
-        'USER': 'postgres', 
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'employee',
+        'USER': 'root',
         'PASSWORD': 'example',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 
