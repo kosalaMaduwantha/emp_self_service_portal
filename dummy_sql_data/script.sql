@@ -36,7 +36,7 @@ INSERT INTO public.document_document (
     updated_date,
     document_category,
     doc_link,
-    employee_id
+    employee_id 
 )
 VALUES
     ('Contract 2023', 'Employment Contract', '2023-07-15', '2023-07-17', 'Employment', '/documents/contract_2023', 1),
