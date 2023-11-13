@@ -1,11 +1,22 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
-        echo 'building the image'
+        checkout scm
       }
     }
-
+    stage('Build Docker Image') {
+      steps {
+        script {
+          dockerImage = docker.build("employee_management:latest")
+        }
+      }
+    }
+    stage('Deploy Docker container in docker') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
   }
 }
