@@ -1,0 +1,4 @@
+env/
+mysql_db/
+mysql_db.yml
+document/data/
