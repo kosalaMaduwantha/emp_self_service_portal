@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,13 +85,19 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# getting the db configs from env
+USER_NAME = os.getenv('USER_NAME')
+DB_NAME = os.getenv('DB_NAME')
+PASSWORD = os.getenv('PASSWORD')
+HOST_NAME = os.getenv('HOST_NAME')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'employee',
-        'USER': 'root',
-        'PASSWORD': 'example',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'NAME': DB_NAME,
+        'USER': USER_NAME,
+        'PASSWORD': PASSWORD,
+        'HOST': HOST_NAME,   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
