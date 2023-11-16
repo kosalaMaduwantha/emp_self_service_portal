@@ -13,10 +13,6 @@ pipeline {
         }
       }
     }
-    stage('Deploy Docker container in docker') {
-      steps {
-        sh 'docker-compose up -d'
-      }
-    }
+    
   }
 }
