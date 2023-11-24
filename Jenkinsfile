@@ -1,18 +1,17 @@
 pipeline {
-  agent any
-  stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-    stage('Build Docker Image') {
-      steps {
-        script {
-          dockerImage = docker.build("employee_management:latest")
-        }
-      }
-    }
+    agent any
     
-  }
+    stages {
+        stage('Build') {
+            steps {
+                // Checkout the repository
+                checkout scm
+                
+                // Build the Docker image
+                script {
+                    docker.build("employee:${env.BUILD_NUMBER}")
+                }
+            }
+        }
+    }
 }
