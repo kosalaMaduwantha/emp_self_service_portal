@@ -267,8 +267,8 @@ since this project is build using Django framework, it follows the Django best p
 
 ### Database Schema
 
-you can find the database schema here 
-![Database Schema](development_docs/er_diagram.png)
+DB SCHEMA
+![DB Schema](er_diagram.png)
 
 ### Configuration
 
