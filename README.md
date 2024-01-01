@@ -25,18 +25,21 @@ python manage.py runserver
 pre-requisites:
 - docker
 - docker-compose
+- make
 
-1. build the docker image
+***use make commads to build and create the container as below***
+
+1. build the image 
 ```bash
-docker build -t essp:latest .
+make build
 ```
-2. run the docker-compose for the database setup
+2. run the db container command
 ```bash
-docker-compose -f docker-compose-db.yml up -d
+make run-db
 ```
-3. run the docker-compose for the application
+3. run the essp deployement command
 ```bash
-docker-compose -f docker-compose.yml up -d
+make run-essp
 ```
 4. open the browser and go to http://localhost:8000
 

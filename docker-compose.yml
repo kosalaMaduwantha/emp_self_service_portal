@@ -4,7 +4,7 @@ version: '3.1'
 services:
 
   backend:
-    image: employee:latest
+    image: kosalama/essp:latest
     environment:
       - USER_NAME=root
       - DB_NAME=employee
