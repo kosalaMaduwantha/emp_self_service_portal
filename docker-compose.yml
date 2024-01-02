@@ -4,12 +4,12 @@ version: '3.1'
 services:
 
   backend:
-    image: employee:latest
+    image: ${CONTAINER_REGISTRY_UNAME}/essp:latest
     environment:
-      - USER_NAME=root
-      - DB_NAME=employee
-      - PASSWORD=example
-      - HOST_NAME=database-emp
+      - USER_NAME=${DB_USER_NAME}
+      - DB_NAME=${DB_NAME}
+      - PASSWORD=${DB_PASSWORD}
+      - HOST_NAME=${DB_HOST_NAME}
     ports:
       - 8000:8000
     networks:

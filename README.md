@@ -25,20 +25,28 @@ python manage.py runserver
 pre-requisites:
 - docker
 - docker-compose
+- make
 
-1. build the docker image
+***use make commads to build and create the container as below***
+
+1. build the image 
 ```bash
-docker build -t essp:latest .
+make build
 ```
-2. run the docker-compose for the database setup
+2. run the db container command
 ```bash
-docker-compose -f docker-compose-db.yml up -d
+make run-db
 ```
-3. run the docker-compose for the application
+3. run the essp deployement command
 ```bash
-docker-compose -f docker-compose.yml up -d
+make run-essp
 ```
 4. open the browser and go to http://localhost:8000
+
+### Build the essp image using jenkins pipeline and push it to the docker hub ###
+1. configure jenkins server
+2. create the pipeline using the jemkin file in the main branch **you should configure dockerhub credentials in jenkins and use the id of the credential and chenge the relevent configuration in the jenkins file
+3. use created jenkin pipeline to build the pipeline
 
 **you can change the configuration in the docker-compose.yml file according to your preference**
 

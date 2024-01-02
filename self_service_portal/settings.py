@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'self_service_portal.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 # getting the db configs from env
-USER_NAME = os.getenv('USER_NAME', 'root')
-DB_NAME = os.getenv('DB_NAME', 'employee')
-PASSWORD = os.getenv('PASSWORD', 'example')
-HOST_NAME = os.getenv('HOST_NAME', '127.0.0.1')
+USER_NAME = os.getenv('USER_NAME')
+DB_NAME = os.getenv('DB_NAME')
+PASSWORD = os.getenv('PASSWORD')
+HOST_NAME = os.getenv('HOST_NAME')
 
 DATABASES = {
     'default': {

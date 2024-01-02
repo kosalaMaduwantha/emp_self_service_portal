@@ -1,14 +1,15 @@
 pipeline { 
   environment { 
-      registry = "kosalama/essp" 
-      registryCredential = 'dockerhub_id' 
-      dockerImage = '' 
+      registry = "${env.DOCKER_REGISTRY}" 
+      registryCredential = "${env.DOCKER_REGISTRY_CREDENTIAL}" 
+      dockerImage = ""
+      repository = "${env.SERVICE_REPOSITORY}"
   }
   agent any 
   stages {
       stage('Cloning Git') { 
           steps { 
-              git 'https://github.com/jpolara2016/test_app' 
+              git repository 
           }
       } 
       stage('Building image') { 
