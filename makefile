@@ -1,7 +1,5 @@
-# create make command to create new image using dockerfile
-IMAGE_NAME=essp
-IMAGE_TAG=latest
-IMAGE_REPOSITORY=kosalama/essp
+-include .env
+export
 
 # Build image using dockerfile and tag it with image name and tag
 build:
